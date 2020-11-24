@@ -1,0 +1,15 @@
+form {
+    font-size: 18px; 
+  }
+  
+  section h2 {
+    font-size: 24px;
+  }
+  
+  .results img {
+    max-width: 500px;
+  }
+  
+  .hidden {
+    display: none;
+  }
