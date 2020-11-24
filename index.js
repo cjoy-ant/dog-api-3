@@ -1,14 +1,16 @@
-function getBreed() {
-    let enteredBreed = $('#dog-breed').val();
-    return enteredBreed;
-}
-  
-function getDogImages(breed) {
+ function getDogImages(dog) {
   console.log('Fetching your dog images');
+  getBreed();
    fetch (`https://dog.ceo/api/breed/${getBreed()}/images/random`)
    .then(response => response.json())
    .then(responseJson => displayResults(responseJson))
    .catch(error => alert('Something went wrong.Try again later.'))
+}
+
+//gets breed from text input
+function getBreed() {
+  let enteredBreed = $('#dog-breed').val();
+  return enteredBreed;
 }
 
 // displaysResults to the DOM
