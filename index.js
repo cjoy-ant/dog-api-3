@@ -1,7 +1,7 @@
- function getDogImages(dog) {
+ function getDogImages() {
   console.log('Fetching your dog images');
-  getBreed();
-   fetch (`https://dog.ceo/api/breed/${getBreed()}/images/random`)
+  let breed = getBreed();
+   fetch (`https://dog.ceo/api/breed/${breed}/images/random`)
    .then(response => response.json())
    .then(responseJson => displayResults(responseJson))
    .catch(error => alert('Something went wrong.Try again later.'))
@@ -15,14 +15,15 @@ function getBreed() {
 
 // displaysResults to the DOM
 function displayResults(responseJson) {
+  console.log(responseJson);
+  let displayBreed = getBreed();
   if (responseJson.status === "success") {
-    $('section h2').replaceWith(`<h2>Look at this ${getBreed()}!</h2>`);
-    $('.results-img').replaceWith(`<br><img src="${responseJson.message}" class="results-img">`);
+    $('section h2').replaceWith(`<h2>Look at this ${displayBreed}!</h2>`);
+    $('.results-img').replaceWith(`<img src="${responseJson.message}" class="results-img">`);
     $('.results').removeClass('hidden');
   } else {
-    $('section h2').replaceWith(`<h2>Sorry! We can't seem to find the breed '${getBreed()}'. Try another.</h2>`);
-    $('.results-img').replaceWith(`<p>[No available image to display]</p>`);
-    $('.results').removeClass('hidden');
+    $('section h2').replaceWith(`<h2>Sorry! We can't seem to find the breed '${displayBreed}'. Try another.</h2>`);
+    $('.results-img').addClass('hidden');
   }
 }
 
